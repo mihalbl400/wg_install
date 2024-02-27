@@ -41,6 +41,7 @@ read -rp "WG port: " -e -i "61820" WG_PORT
 read -rp "WG WebUI port: " -e -i "61821" WG_UI_PORT
 read -rp "Password: " -e -i "foobar12345#" WG_UI_PASSWORD
 read -rp "Default DNS: " -e -i "1.1.1.1, 1.0.0.1" WG_DEFAULT_DNS
+read -rp "Default address: " -e -i "10.13.12.x" WG_DEFAULT_ADDRESS
 
 sed -i 's:^WG_HOST=.*:WG_HOST='$WG_HOST':' ./.env
 sed -i 's:^WG_UI_PASSWORD=.*:WG_UI_PASSWORD='$WG_UI_PASSWORD':' ./.env
@@ -49,6 +50,9 @@ sed -i 's:^WG_UI_PORT=.*:WG_UI_PORT='$WG_UI_PORT':' ./.env
 
 sed -i '/WG_DEFAULT_DNS/d' ./.env
 echo "WG_DEFAULT_DNS=$WG_DEFAULT_DNS" >> ./.env
+
+sed -i '/WG_DEFAULT_ADDRESS/d' ./.env
+echo "WG_DEFAULT_ADDRESS=$WG_DEFAULT_ADDRESS" >> ./.env
 
 #cp ./docker-compose.yml ./docker-compose.yml.base
 rm ./docker-compose.yml
