@@ -4,7 +4,7 @@ apt update
 apt install git curl wget fail2ban -y
 systemctl enable fail2ban
 echo "[sshd]
-backend=systemd
+backend   = systemd
 enabled   = true
 maxretry  = 3
 findtime  = 1h
